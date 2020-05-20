@@ -58,8 +58,9 @@ int main() {
 		cout << "(4) Update my Pantry." << endl;
 		cout << "(5) What is in my Pantry?" << endl;
 		cout << "(6) Prioritize my Pantry by shelf life." << endl;
-		cout << "(7) Upload list." << endl;
-		cout << "(8) Exit from my Pantry." << endl;
+		cout << "(7) Sort my Pantry by quantities." << endl;
+		cout << "(8) Upload list." << endl;
+		cout << "(9) Exit from my Pantry." << endl;
 		cout << "Enter your choice: " << endl;
 		cin >> choice;
 
@@ -91,7 +92,7 @@ int main() {
 					}
 					break;
 		case 4 : 	cout << "Enter details of item for update: " << endl;
-		cin.getline(name,80);
+					cin.getline(name,80);
 					cout << "Enter name of item: " << endl;
 					cin.getline(name, 80);
 					cout << "Enter new quantity: " << endl;
@@ -102,18 +103,20 @@ int main() {
 					break;
 		case 5 : 	sto.printItems();
 					break;
-		case 6:    	cout << "Pantry items ordered by shelf life:" << endl;
+		case 6:    	cout << "\nPantry items prioritized by shelf life:" << endl;
                 			sto.heapsort();
                 			sto.printItems();
                  			break;
-		case 7 :	string fileName = "Test.txt";
+		case 7: 	cout << "\nPantry items sorted by quantity."<< endl;
+                   			sto.quickSort(0, sto.numItem -1);
+                    			sto.printItems();
+                    			break;
+		case 8 :	string fileName = "Test.txt";
 					readFromFile(sto, "Test.txt");
 					sto.printItems();
-				break;
-
-
+					break;
 		}
-	} while(choice != 8);
+	} while(choice != 9);
 
 	return 0;
 }
