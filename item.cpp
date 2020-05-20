@@ -1,3 +1,9 @@
+/*
+ * item.cpp
+ *
+ *  Created on: May 18, 2020
+ *      Author: elizabeth-na
+ */
 #include <iostream>
 #include <string>
 #include "item.h"
@@ -68,3 +74,6 @@ istream& operator >>(istream& is, item& item) {
 	}
 	return is;
 }
+
+
+

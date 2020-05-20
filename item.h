@@ -1,3 +1,9 @@
+/*
+ * item.h
+ *
+ *  Created on: May 18, 2020
+ *      Author: elizabeth-na
+ */
 #ifndef ITEM_H_
 #define ITEM_H_
 #include <string>
