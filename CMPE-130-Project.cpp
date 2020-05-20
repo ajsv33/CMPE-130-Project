@@ -109,9 +109,10 @@ int main() {
 		case 7 :	string fileName = "Test.txt";
 					readFromFile(sto, "Test.txt");
 					sto.printItems();
+				break;
 
 
-								}
+		}
 	} while(choice != 8);
 
 	return 0;
