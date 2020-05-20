@@ -104,7 +104,7 @@ int main() {
 					break;
 		case 6:    	cout << "Pantry items ordered by shelf life:" << endl;
                 			sto.heapsort();
-                			sto.printArray();
+                			sto.printItems();
                  			break;
 		case 7 :	string fileName = "Test.txt";
 					readFromFile(sto, "Test.txt");
