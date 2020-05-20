@@ -7,26 +7,58 @@
 //============================================================================
 
 #include <iostream>
-
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <string.h>
 #include "inventory.h"
 #include "item.h"
 using namespace std;
 
+void readFromFile(inventory& A, string fileName){
+	ifstream fin;
+	fin.open(fileName);
+	item element;
+	if(fin.fail()) {
+	    cout << "File failed to open :(" << endl;
+	}
+	    string tempN, line, tempQ, tempS;
+	    int quantity, shelflife;
+	    
+	    while(getline(fin, line))
+		{
+			stringstream ss(line);
+			getline(ss, tempN, ',');
+			char nstr[tempN.size()+1];
+			strcpy(nstr, tempN.c_str());
+			getline(ss, tempQ, ',');
+			quantity = stoi(tempQ);
+			getline(ss, tempS, ',');
+			shelflife = stoi(tempS);
+			A.insertItem(nstr, quantity, shelflife);
+		}
+	
+
+    fin.close(); 
+
+}
+
 int main() {
-	inventory sto;
+	inventory sto, Atest;
 	char name[30];
 	int quantity, shelfLife, choice;
 
 	do
 	{
 		cout << "<--------Your Food Pantry---------->" << endl;
-		cout << "<--------Menu----------->" << endl;
+		cout << "<---------------Menu--------------->" << endl;
 		cout << "(1) Insert an item to my Pantry." << endl;
 		cout << "(2) Delete an item from my Pantry." << endl;
 		cout << "(3) Search for an item." << endl;
-		cout << "(4) Update my Pantry" << endl;
+		cout << "(4) Update my Pantry." << endl;
 		cout << "(5) What is in my Pantry?" << endl;
-		cout << "(6) Exit from my Pantry" << endl;
+		cout << "(6) Upload list." << endl;
+		cout << "(7) Exit from my Pantry." << endl;
 		cout << "Enter your choice: " << endl;
 		cin >> choice;
 
@@ -68,9 +100,14 @@ int main() {
 					sto.updateItem(name, quantity, shelfLife);
 					break;
 		case 5 : 	sto.printItems();
+					break;
+		case 6 :	string fileName = "Test.txt";
+					readFromFile(sto, "Test.txt");
+					sto.printItems();
 
-		}
-	} while(choice != 6);
+
+								}
+	} while(choice != 7);
 
 	return 0;
 }
