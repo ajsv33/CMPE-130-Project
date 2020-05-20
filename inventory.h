@@ -15,10 +15,14 @@ public:
 	void updateItem(char itemName[], int itemQuantity, int itemShelflife);
 	item * searchi(char itemName[]);
 	void printItems();
-	//sort()
 
+	//heap
 	void heapify (int n, int i);
    	void heapsort();
+	
+	//quicksort
+	void quickSort(int low, int high);
+   	int partition(int low, int high);
 };
 
 
