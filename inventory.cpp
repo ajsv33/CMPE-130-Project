@@ -80,12 +80,12 @@ void inventory::heapify (int n, int i){
     if (largest != i)// If largest is not at root
     {
         swap(db[i], db[largest]); //swap the largest with the root
-        heapify(n, largest);// Recursive call
+        heapify(n, largest);// Recursive 
     }
 }
 
 void inventory::heapsort(){
-    for (int i = (numItem/2) - 1; i >= 0; i--)// Build heap (rearrange array)
+    for (int i = (numItem/2) - 1; i >= 0; i--)//build heap
         heapify(numItem, i);
 
     for (int i=numItem-1; i>0; i--)//get elements from heap
@@ -95,3 +95,29 @@ void inventory::heapsort(){
     }  
 }
 
+int inventory::partition(int low, int high){
+    int pivot = db[high].quantity;    //pivot set to last quantity element in db
+    int i = (low - 1);  //low element index
+  
+    for (int j = low; j <= high- 1; j++)
+    {
+        if (db[j].quantity <= pivot)
+        {
+            i++;    // increment low element index
+            swap(db[i], db[j]);
+        }
+    }
+	
+    swap(db[i + 1], db[high]);
+    return (i + 1);
+}
+
+void inventory::quickSort(int low, int high)
+{
+    if (low < high)
+    {
+        int pi = partition(low, high);//pi is partitioning index
+        quickSort(low, pi - 1);//recursive call before p1
+        quickSort(pi + 1, high);//recursive call after p1
+    }
+}
