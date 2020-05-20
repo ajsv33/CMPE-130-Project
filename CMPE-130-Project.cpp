@@ -57,8 +57,9 @@ int main() {
 		cout << "(3) Search for an item." << endl;
 		cout << "(4) Update my Pantry." << endl;
 		cout << "(5) What is in my Pantry?" << endl;
-		cout << "(6) Upload list." << endl;
-		cout << "(7) Exit from my Pantry." << endl;
+		cout << "(6) Prioritize my Pantry by shelf life." << endl;
+		cout << "(7) Upload list." << endl;
+		cout << "(8) Exit from my Pantry." << endl;
 		cout << "Enter your choice: " << endl;
 		cin >> choice;
 
@@ -101,13 +102,17 @@ int main() {
 					break;
 		case 5 : 	sto.printItems();
 					break;
-		case 6 :	string fileName = "Test.txt";
+		case 6:    	cout << "Pantry items ordered by shelf life:" << endl;
+                			sto.heapsort();
+                			sto.printArray();
+                 			break;
+		case 7 :	string fileName = "Test.txt";
 					readFromFile(sto, "Test.txt");
 					sto.printItems();
 
 
 								}
-	} while(choice != 7);
+	} while(choice != 8);
 
 	return 0;
 }
